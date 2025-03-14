@@ -100,5 +100,40 @@ Lier la GPO à l'OU .
 Forcer l'application de la stratégie avec :
 gpupdate /force
 
+Q.1.3.1 - Créer une GPO Drive-Mount pour monter les lecteurs E: et F: sur les clients
 
+Ouvrir Group Policy Management (GPMC) sur SRVWIN01.
+
+Créer une nouvelle GPO nommée Drive-Mount.
+
+Modifier la GPO et naviguer vers :
+User Configuration → Preferences → Windows Settings → Drive Maps.
+
+Ajouter deux nouvelles entrées :
+
+Lecteur E:
+
+Action : Créer
+
+Location : \\Serveur\PartageE
+
+Reconnect : Cocher
+
+Drive Letter : E:
+
+Lecteur F:
+
+Action : Créer
+
+Location : \\Serveur\PartageF
+
+Reconnect : Cocher
+
+Drive Letter : F:
+
+Lier la GPO à l'OU concernée (ex: LabUsers).
+
+Forcer l'application de la stratégie avec :
+
+![image](https://github.com/user-attachments/assets/2469babe-4791-42e0-9a7f-6f81be5329c8)
 
