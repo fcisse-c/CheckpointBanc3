@@ -86,8 +86,19 @@ Q.1.2.2 Bloquer sa connexion au seul ordinateur CLIENT01.
 ![image](https://github.com/user-attachments/assets/34875723-6a93-4571-8f69-6aa3f790a89b)
 
 Q.1.2.3 Mettre en place une stratégie de mot de passe pour durcir les comptes des utilisateurs de l'OU LabUsers.
+Ouvrir Group Policy Management (GPMC) sur SRVWIN01.
 
+Créer une nouvelle GPO nommée PasswordPolicy_LabUsers.
 
+Modifier la GPO et configurer les paramètres suivants dans :
+Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Password Policy :
+
+![image](https://github.com/user-attachments/assets/bffb95b0-e258-4e2e-8dc4-5a4c438e6656)
+
+Lier la GPO à l'OU .
+
+Forcer l'application de la stratégie avec :
+gpupdate /force
 
 
 
