@@ -24,7 +24,7 @@ sudo systemctl start ssh
 
 ## Exercice 1
 
-Partie 1 : Gestion des utilisateurs
+### Partie 1 : Gestion des utilisateurs
 Configuration des utilisateurs (Windows Server)
 
 Q.1.1.1 : Créer l'utilisateur Lionel Lemarchand avec les mêmes attributs que Kelly Rhameur
@@ -76,7 +76,7 @@ Déplacez l’archive dans un emplacement sécurisé ou dédié pour l’archiva
 
 Créez un nouveau dossier pour Lionel Lemarchand, avec les mêmes permissions que Kelly Rhameur.
 
-Partie 2 : Restriction utilisateurs
+### Partie 2 : Restriction utilisateurs
 Q.1.2.1 Faire en sorte que l'utilisateur Gabriel Ghul ne puisse se connecter que du lundi au vendredi, de 7h à 17h.
 
 ![image](https://github.com/user-attachments/assets/1dd3286d-3d0d-47f2-9331-5fb5b2e8b443)
@@ -137,3 +137,50 @@ Forcer l'application de la stratégie avec :
 
 ![image](https://github.com/user-attachments/assets/2469babe-4791-42e0-9a7f-6f81be5329c8)
 
+## Exercice 2 : Manipulations pratiques sur VM Linux
+
+### Partie 1 : Gestion des utilisateurs
+
+Q.2.1.1 - Création d'un compte utilisateur personnel
+
+Se connecter au serveur SRVLX01.
+
+Exécuter la commande suivante pour créer un utilisateur :
+
+sudo adduser user1
+
+Suivre les instructions pour définir un mot de passe et renseigner les informations supplémentaires si nécessaire.
+
+![image](https://github.com/user-attachments/assets/96296fe7-8663-4788-8eed-12953c44cfd4)
+
+Q.2.1.2 - Préconisations pour le compte utilisateur
+
+Utiliser un mot de passe fort :
+
+Minimum 12 caractères, incluant majuscules, minuscules, chiffres et caractères spéciaux.
+
+Ne pas utiliser le compte root directement :
+
+Ajouter l'utilisateur au groupe sudo pour les privilèges administratifs :
+
+sudo usermod -aG sudo user1
+
+Désactiver la connexion SSH directe pour root :
+
+Modifier le fichier de configuration SSH :
+
+sudo nano /etc/ssh/sshd_config
+
+Changer la ligne PermitRootLogin yes en PermitRootLogin no.
+
+Redémarrer le service SSH :
+
+sudo systemctl restart ssh
+
+Configurer l'expiration du mot de passe :
+
+Définir une expiration à 60 jours :
+
+sudo chage -M 60 mon_utilisateur
+
+Activer l'authentification à deux facteurs (2FA) pour SSH (optionnel mais recommandé).
