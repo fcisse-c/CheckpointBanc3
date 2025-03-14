@@ -17,6 +17,8 @@ Assurez-vous que le service SSH est actif avec sudo systemctl start ssh et qu’
 
 
 ## Exercice 1
+
+Partie 1 : Gestion des utilisateurs
 Configuration des utilisateurs (Windows Server)
 
 Q.1.1.1 : Créer l'utilisateur Lionel Lemarchand avec les mêmes attributs que Kelly Rhameur
@@ -67,4 +69,12 @@ Compressez (archivez) le dossier de Kelly Rhameur, par exemple avec un outil com
 Déplacez l’archive dans un emplacement sécurisé ou dédié pour l’archivage.
 
 Créez un nouveau dossier pour Lionel Lemarchand, avec les mêmes permissions que Kelly Rhameur.
+
+Partie 2 : Restriction utilisateurs
+Q.1.2.1 Faire en sorte que l'utilisateur Gabriel Ghul ne puisse se connecter que du lundi au vendredi, de 7h à 17h.
+
+Q.1.2.2 Bloquer sa connexion au seul ordinateur CLIENT01.
+
+Q.1.2.3 Mettre en place une stratégie de mot de passe pour durcir les comptes des utilisateurs de l'OU LabUsers.
+
 
