@@ -14,6 +14,12 @@ Installez le package avec sudo apt install openssh-server.
 
 Assurez-vous que le service SSH est actif avec sudo systemctl start ssh et qu’il démarre automatiquement (sudo systemctl enable ssh).
 
+sudo apt update && sudo apt install -y openssh-server
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+
+![image](https://github.com/user-attachments/assets/1e00f2d0-6dec-4ac3-84f8-47b76f555de4)
 
 
 ## Exercice 1
@@ -73,8 +79,15 @@ Créez un nouveau dossier pour Lionel Lemarchand, avec les mêmes permissions qu
 Partie 2 : Restriction utilisateurs
 Q.1.2.1 Faire en sorte que l'utilisateur Gabriel Ghul ne puisse se connecter que du lundi au vendredi, de 7h à 17h.
 
+![image](https://github.com/user-attachments/assets/1dd3286d-3d0d-47f2-9331-5fb5b2e8b443)
+
 Q.1.2.2 Bloquer sa connexion au seul ordinateur CLIENT01.
 
+![image](https://github.com/user-attachments/assets/34875723-6a93-4571-8f69-6aa3f790a89b)
+
 Q.1.2.3 Mettre en place une stratégie de mot de passe pour durcir les comptes des utilisateurs de l'OU LabUsers.
+
+
+
 
 
