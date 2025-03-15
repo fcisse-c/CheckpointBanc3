@@ -147,11 +147,11 @@ Se connecter au serveur SRVLX01.
 
 Exécuter la commande suivante pour créer un utilisateur :
 
-sudo adduser user1
+sudo adduser fatouma
 
 Suivre les instructions pour définir un mot de passe et renseigner les informations supplémentaires si nécessaire.
 
-![image](https://github.com/user-attachments/assets/96296fe7-8663-4788-8eed-12953c44cfd4)
+![image](https://github.com/user-attachments/assets/aa7faf95-28a3-4b45-a0e7-4b02ab428877)
 
 Q.2.1.2 - Préconisations pour le compte utilisateur
 
@@ -163,7 +163,7 @@ Ne pas utiliser le compte root directement :
 
 Ajouter l'utilisateur au groupe sudo pour les privilèges administratifs :
 
-sudo usermod -aG sudo user1
+sudo usermod -aG sudo fatouma
 
 Désactiver la connexion SSH directe pour root :
 
@@ -172,6 +172,8 @@ Modifier le fichier de configuration SSH :
 sudo nano /etc/ssh/sshd_config
 
 Changer la ligne PermitRootLogin yes en PermitRootLogin no.
+![image](https://github.com/user-attachments/assets/6dfaad04-92cb-43f5-98f6-fdd192b8cc94)
+
 
 Redémarrer le service SSH :
 
@@ -181,6 +183,59 @@ Configurer l'expiration du mot de passe :
 
 Définir une expiration à 60 jours :
 
-sudo chage -M 60 mon_utilisateur
+sudo chage -M 60 fatouma
 
 Activer l'authentification à deux facteurs (2FA) pour SSH (optionnel mais recommandé).
+
+
+### Partie 2 : Configuration de SSH
+
+Q.2.2.1 - Désactiver complètement l'accès à distance de l'utilisateur root
+
+Modifier le fichier de configuration SSH :
+
+sudo nano /etc/ssh/sshd_config
+
+Trouver la ligne suivante et la modifier :
+
+PermitRootLogin no
+
+Redémarrer le service SSH :
+
+sudo systemctl restart ssh
+
+Q.2.2.2 - Autoriser l'accès à distance à ton compte personnel uniquement
+
+Modifier le fichier de configuration SSH :
+
+sudo nano /etc/ssh/sshd_config
+
+Ajouter ou modifier la ligne suivante :
+
+AllowUsers mon_utilisateur
+
+Redémarrer le service SSH :
+
+sudo systemctl restart ssh
+
+Q.2.2.3 - Mettre en place une authentification par clé valide et désactiver l'authentification par mot de passe
+
+Générer une clé SSH sur la machine cliente :
+
+ssh-keygen -t rsa -b 4096
+
+Copier la clé publique sur le serveur :
+
+ssh-copy-id mon_utilisateur@adresse_du_serveur
+![image](https://github.com/user-attachments/assets/ddcc1125-0344-4e33-9008-dd8c1a3424b3)
+
+Modifier le fichier de configuration SSH :
+
+sudo nano /etc/ssh/sshd_config
+
+Mettre à jour les paramètres suivants :
+
+PasswordAuthentication no
+PubkeyAuthentication yes
+
+Redémarrer le service SSH :
